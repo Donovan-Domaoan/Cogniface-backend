@@ -6,6 +6,7 @@ const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key " + process.env.CLARIFAI_API);
 
 const handleApiCall = (req, res) => {
+    console.log("Clarifai API Key from ENV:", process.env.CLARIFAI_API_KEY);
     console.log('face detecion API hit:', req.body);
     const { input } = req.body;
 
