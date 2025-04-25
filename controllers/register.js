@@ -1,5 +1,7 @@
 const handleRegister = (req, res, db, bcrypt) => {
     console.log("registration received:", req.body);
+    console.log("BODY RECEIVED:", req.body);
+
     const { email, name, password } = req.body;
 
     if (!email || !name || !password) {
@@ -30,8 +32,9 @@ const handleRegister = (req, res, db, bcrypt) => {
                 .then(user => {
                     console.log('Inserted into users:', user);
                     if (user && user[0]) {
-                        res.json(user[0]);
+                        return res.json(user[0]);
                     } else {
+                        console.log("no user returned from DB")
                         res.status(500).json({ error: 'User creation failed' });
                     }
                 });
