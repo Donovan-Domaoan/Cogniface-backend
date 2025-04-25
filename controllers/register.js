@@ -1,6 +1,8 @@
 const handleRegister = (req, res, db, bcrypt) => {
+    console.log("registration recieved:", req.body);
     const { email, name, password } = req.body;
     if(!email || !name || !password) {
+        console.log('Missing fields');
         return res.status(400).json('incorrect form submission');
     }
     const hash = bcrypt.hashSync(password);
@@ -20,6 +22,7 @@ const handleRegister = (req, res, db, bcrypt) => {
                         joined: new Date(),
                         entries: 0
                     }).then(user => {
+                        console.log('User successfully registered:', user[0]);
                         res.json(user[0]);
                     })
             })
