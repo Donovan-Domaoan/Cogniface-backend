@@ -6,6 +6,7 @@ const metadata = new grpc.Metadata();
 metadata.set("authorization", process.env.CLARIFAI_API);
 
 const handleApiCall = (req, res) => {
+    console.log('face detecion API hit:', req.body);
     const { input } = req.body;
 
     stub.PostModelOutputs(
