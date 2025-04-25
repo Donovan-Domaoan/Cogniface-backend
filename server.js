@@ -21,6 +21,13 @@ const db = knex({
     },
 });
 
+db.raw('SELECT 1')
+    .then(() => {
+        console.log('Connected to PostgreSQL');
+    })
+    .catch(err => {
+        console.error('Failed to connect to PostgreSQL:', err);
+    });
 
 const app = express();
 
