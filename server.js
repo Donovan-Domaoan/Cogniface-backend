@@ -10,17 +10,22 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
+const DATABASE_DB = process.env.DATABASE_DB
+const DATABASE_HOST = process.env.DATABASE_HOST
+const DATABASE_PW = process.env.DATABASE_PW
+const DATABASE_USER = process.env.DATABASE_USER
+
 
 
 
 const db = knex({
     client: 'pg',
     connection: {
-        host: process.env.DATABASE_HOST,
+        host: DATABASE_HOST,
         port: 5432,
-        user: process.env.DATABASE_USER,
-        password: process.env.DATABASE_PW,
-        database: process.env.DATABASE_DB,
+        user: DATABASE_USER,
+        password: DATABASE_PW,
+        database: DATABASE_DB,
     },
 });
 
