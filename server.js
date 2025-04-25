@@ -40,7 +40,9 @@ app.get('/', (req, res) => {
     res.send({status: "API success"});
 })
 
-app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)});
+app.post('/signin', (req, res) => {
+    console.log('signin route hit')
+    signin.handleSignin(req, res, db, bcrypt)});
 
 app.post('/register', (req,res) => {
     console.log('Register route hit:', req.body);
